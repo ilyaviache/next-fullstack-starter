@@ -7,15 +7,13 @@ import {
 } from 'mongodb';
 
 import {
-  DB_HOST,
-  DB_USER,
+  MONGO_URI,
   DB_NAME,
-  DB_PASSWORD,
   IS_DEV
 } from '@/configs/env';
 
-const MONGODB_URI =
-  `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`;
+// const MONGO_URI =
+//   `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`;
 
 const globalAny: any = global;
 
@@ -29,7 +27,7 @@ abstract class Model<T> {
    */
   protected async connect(): Promise<Collection<Document>> {
     let db: Db;
-    const client = new MongoClient(MONGODB_URI);
+    const client = new MongoClient(MONGO_URI);
     const connect = () => client.connect().then(() => client.db(DB_NAME));
     if (IS_DEV) {
       if (!globalAny._db) {

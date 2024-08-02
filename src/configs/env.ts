@@ -8,6 +8,8 @@ export const DB_PASSWORD = process.env.DB_PASSWORD;
 export const DB_NAME = process.env.DB_NAME;
 export const SECRET_APP_KEY = process.env.SECRET_APP_KEY;
 
+export const MONGO_URI = process.env.MONGO_URI || '';
+
 /** NEXT_PUBLIC ENV */
 
 /** Custom ENV */
